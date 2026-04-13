@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg: #07111f;
+  --surface: rgba(13, 23, 40, 0.85);
+  --surface-strong: rgba(16, 28, 49, 0.92);
+  --line: rgba(255, 255, 255, 0.08);
+  --text: #e7eefc;
+  --muted: #90a5c4;
+  --brand: #337ef0;
+  --accent: #ff9d1a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #07111f 0%, #09111d 42%, #0b1322 100%);
+  color: var(--text);
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(51, 126, 240, 0.35);
+}
+
+@layer components {
+  .glass {
+    @apply border border-white/10 bg-slate-950/40 backdrop-blur-xl;
+  }
+
+  .panel {
+    @apply rounded-3xl border border-white/10 bg-surface/90 shadow-soft backdrop-blur-xl;
+  }
+
+  .panel-strong {
+    @apply rounded-3xl border border-white/10 bg-card/90 shadow-glow backdrop-blur-xl;
+  }
+
+  .field {
+    @apply w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-brand-400 focus:bg-white/[0.07] focus:ring-2 focus:ring-brand-400/20;
+  }
+
+  .field-label {
+    @apply mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-400;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-200;
+  }
+
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(51, 126, 240, 0.75), rgba(255, 157, 26, 0.55), rgba(126, 255, 216, 0.22));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+.bg-grid {
+  background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
